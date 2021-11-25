@@ -1,0 +1,180 @@
+/*
+Aqui usando o root criamos variáveis com cores que serão usadas
+durante todo o nosso projetinho.
+*/
+
+:root{
+    --color-main: #fff; 
+    --color-green: #33CC95;
+    --color-header: #5429CC;
+    --color-red: #E52E4D;
+    --font-color-main: #969CB2;
+}
+
+/*
+    Aqui definimos o padrão geral que será usado por nossas box model
+    margin - zerando margins externas
+    paddings = zerando margins internas
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+    Na body definimos padrões usados em todos os elementos filhos
+    Usamos uma font externa do google  fonts 'Poppins', com fonts adjacentes
+*/
+body{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+/*
+    Configuração da nossas tag de cabeçalho header
+    Foi definido usando a função width que o cabeçalho teria 100% de largura e cor de fundo.
+    
+*/
+header{
+    width: 100%;
+    background-color: var(--color-header);
+}
+
+/*
+    Dentro do header temos o elemento filho nav que foi definido com largunra de 80%
+    Usou-se display flex para deixar os itens filhos lado a lado. A funcão justify-content, com o atributo
+    spece-betewen  permitiu dá um espaço inicial e final entre os itens.
+    foi definido que o bloco NAV teria uma altura de 210px e que estaria distante do topo interno em 30px.
+    Flex-wrap quebra os itens em coluna caso a tela seja dimuida não comportem as larguras definidas.
+
+*/
+nav{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 210px;
+    padding-top: 30px;
+    margin: 0 auto;
+}
+
+
+/*
+    O botão que está dentro da nav foi estilizado sem borda, com cor de fundo e cor do texto. Usou-se a função
+    cursor para definir o simbolo da "mãozinha POINTER" ao passar o mouse em cima do botão.
+    A função transition-duration determina que se houver uma ação de transição no botão, como por exemplo um hover de
+    mudar a cor, está deve durar x segundos.
+    A função transition seguida da referência da função transforme determmina que se houver uma ação
+    com tal referência somente ela, deve durar x segundos.
+
+*/
+nav button{
+    width: 200px;
+    height: 50px;
+    background-color: #6933FF;
+    color: var(--color-main);
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    transition: transform .2s;
+}
+
+
+
+/*
+    A pseudo class :hover cria uma ação visual ao passarmos o mouse sobre o elemento button.
+    Mudança dde cor e  o transformar aumentando sua escala em 1.2 no tempo de 0.2s conforme definido antes
+*/
+nav button:hover{
+    background-color: #875cfd;
+    transform: scale(1.02);
+}
+
+
+/*
+    Na main definimos todos os nossos elementos principais
+    defimos que o mesmo tem 100% de largura e uma altura minima inicial.
+    todos os itens filhos estarão flexiveis definido verticalmente pela função flex-direction: column
+    os itens também estarão ao centro como definido pelo align-items
+*/
+main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    background-color: #E5E5E5;
+}
+
+
+/*
+    aqui temos a sessão que envolve os nossos cards tendo 80% de largura
+    Possui display flexivel e caso o tamanho da tela seja menor que a disposição dos itens internos
+    eles são quebrados em colunas usando o flex-wrap. 
+    Usou-se o space-between para separação entre os cards internos a section.
+    Usou-se uma margem negativa para retroceder a section que contém os blocos a posição definida em  protótipo.
+*/
+main section{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin-top: -70px;
+}
+
+/*
+    Agora criamos os cards com largura e altura fixa.  Usamos a função min-with por que queremos que tenha um tamanho
+    minímo independente do que está dentro da div
+    Demos margins internas usando o padding para em cima em baixo recuem para dentro 20px e aos lados 10px
+    Atribuimos um tamanho de fonte e uma espessura de 400
+    tiramos 5px de cada borda para arredondá-las
+    e por fim definimos usando a função box-shadow que teriamos uma sombra com expesura de 5px distorção
+    e 1px de borda com cor
+*/
+
+main section div{
+    height: 140px;
+    min-width: 300px;
+    background-color:var(--color-main);
+    padding: 20px 10px;
+    font-size: 22px;
+    font-weight: 400;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 1px var(--font-color-main);
+}
+
+
+/*
+    Usando a pseudoclasse nth-last-child(1) definimos a primeira div da direita pra esquerda terá
+    características diferentes. como cor de fundo e cor do texto diferentes
+*/
+main section div:nth-last-child(1){
+    background-color: var(--color-green);
+    color: var(--color-main)
+}
+
+/*
+    Dentro de cada um dos cards inserimos uma header para cabeçalho interno.
+    definimos como flexivel pq dentro de cada cabeçalho temos um texto e uma imagem que queremos separar
+    lado a lado, por isso definimos com horizontal.
+    em seguinda demos os espaco entre
+    aplicamos a transparencia no fundo por que algumas propriedades estavam sendo herdadas do header principal
+*/
+
+main section div header{
+    display: flex;
+    justify-content:space-between;
+    background-color:transparent;
+    margin-bottom: 15px;
+}
+
+
+/*
+    Aqui definimos uma expessura para os valores do Card
+*/
+main section div h2{
+    font-weight: 300;
+}
